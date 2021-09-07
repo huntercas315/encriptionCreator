@@ -7,35 +7,42 @@ from random import randrange ###Used to randomize encription later
             #"u", "v", "w", "x", "y", "z"]
 
 
+def scrambler(message: str) -> str:
+    returnMessage = ""
+    alphabet = {
+        "a": "0",
+        "b": "1",
+        "c": "2",
+        "d": "3",
+        "e": "4",
+        "f": "5",
+        "g": "6",
+        "h": "7",
+        "i": "8",
+        "j": "9",
+        "k": "10",
+        "l": "11",
+        "m": "12",
+        "n": "13",
+        "o": "14",
+        "p": "15",
+        "q": "16",
+        "r": "17",
+        "s": "18",
+        "t": "19",
+        "u": "20",
+        "v": "21",
+        "w": "22",
+        "x": "23",
+        "y": "24",
+        "z": "25" }
 
-alphabet = {
-    "a": 0,
-    "b": 1,
-    "c": 2,
-    "d": 3,
-    "e": 4,
-    "f": 5,
-    "g": 6,
-    "h": 7,
-    "i": 8,
-    "j": 9,
-    "k": 10,
-    "l": 11,
-    "m": 12,
-    "n": 13,
-    "o": 14,
-    "p": 15,
-    "q": 16,
-    "r": 17,
-    "s": 18,
-    "t": 19,
-    "u": 20,
-    "v": 21,
-    "w": 22,
-    "x": 23,
-    "y": 24,
-    "z": 25 }
+    for character in message:
+        if (character == " "):
+            continue
+        returnMessage += f"{alphabet.get(character)}-"
 
+    return returnMessage
 
 
 # Get Message
@@ -48,6 +55,6 @@ while (message.isalpha() == False):
 
 message = message.casefold()
 
+print(scrambler(message))
 
-
-print(message)###temp###
+#print(message)###temp###
