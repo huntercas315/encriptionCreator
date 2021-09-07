@@ -1,4 +1,5 @@
-from random import randrange ###Used to randomize encription later
+import os
+from random import randrange, randint
 
 # Message Scrambler:
 
@@ -34,9 +35,18 @@ alphabet = {
     "z": "25",
     " ": "/"}
 
+def getMessage() -> str:
+    message = str(input("Enter a message: "))
+
+    while (message.isalnum() == False):
+        print("\nAlphanumeric Characters Only")
+        message = str(input("Enter a message: "))
+
+    message = message.casefold()
+    return message
+
 def scrambler(message: str) -> str:
     returnMessage = ""
-
 
     for character in message:
         if character.isdigit():
@@ -47,21 +57,24 @@ def scrambler(message: str) -> str:
             returnMessage += f"{alphabet.get(character)}-"
 
     if returnMessage.endswith("-"):
-        returnMessage.rstrip("-")
+        returnMessage = returnMessage.rstrip("-")
+
+    saveMessage(returnMessage) # Saves message as .txt for later viewing
 
     return returnMessage
 
+def saveMessage(scrambledMessage) -> None:
+    cwd = os.getcwd() # Finds the Current Working Directory
+    num = randint(100, 999) # Creates number for file
+    name = f"{cwd}/Messages/message{name}" # Assembles final name
+    textDoc = open(name, "x") # Creates new file with name
+    textDoc.write(scrambledMessage) # Adds scrambled message
+    textDoc.close() # Closes file
 
-# Get Message
 
-message = str(input("Enter a message: "))
+message = getMessage() ###temp###
 
-while (message.isalnum() == False):
-    print("\nAlphanumeric Characters Only")
-    message = str(input("Enter a message: "))
-
-message = message.casefold()
-
+# Scramble And Return Result
 print(scrambler(message))
 
 print(message)###temp###
