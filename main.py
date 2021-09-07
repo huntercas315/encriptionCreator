@@ -66,7 +66,7 @@ def scrambler(message: str) -> str:
 def saveMessage(scrambledMessage) -> None:
     cwd = os.getcwd() # Finds the Current Working Directory
     num = randint(100, 999) # Creates number for file
-    name = f"{cwd}/Messages/message{name}" # Assembles final name
+    name = f"{cwd}/Messages/message{num}" # Assembles final name
     textDoc = open(name, "x") # Creates new file with name
     textDoc.write(scrambledMessage) # Adds scrambled message
     textDoc.close() # Closes file
